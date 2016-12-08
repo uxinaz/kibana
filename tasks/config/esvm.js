@@ -38,26 +38,30 @@ module.exports = function (grunt) {
           }
         },
         nodes: [{
-          cluster: { name: 'cluster-01' },
+          cluster: { name: 'data-01' },
           http: { port: 9201 },
-          node: { name: 'node-01', data: true, master: true, max_local_storage_nodes: 3 }
+          node: { name: 'node-01', data: true, master: true, max_local_storage_nodes: 4 }
         }, {
-          cluster: { name: 'cluster-02' },
+          cluster: { name: 'data-02' },
           http: { port: 9202 },
-          node: { name: 'node-02', data: true, master: true, max_local_storage_nodes: 3 }
+          node: { name: 'node-02', data: true, master: true, max_local_storage_nodes: 4 }
+        }, {
+          cluster: { name: 'admin-01' },
+          http: { port: 9203 },
+          node: { name: 'node-03', data: true, master: true, max_local_storage_nodes: 4 }
         }, {
           cluster: { name: 'tribe-01' },
           http: { port: 9200 },
-          node: { name: 'node-03', max_local_storage_nodes: 3 },
+          node: { name: 'node-04', max_local_storage_nodes: 4 },
           tribe: {
             c1: {
               cluster: {
-                name: 'cluster-01'
+                name: 'data-01'
               }
             },
             c2: {
               cluster: {
-                name: 'cluster-02'
+                name: 'data-02'
               }
             },
             on_conflict: 'prefer_c1',
